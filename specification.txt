@@ -1,0 +1,111 @@
+# CS50 Homepage Project - Mohamed Safwat
+**Specification File**
++---------------+
+## What I Built
++---------------+
+I made a personal portfolio website for my CS50 homepage project.
+It's about me (Mohamed Safwat) and shows my work experience in digital transformation and BIM technology.
+I thought this would be a good way to practice web development while also creating something useful for my career.
+
++----------------------------------+
+## HTML Tags I Used (10+ required)
++----------------------------------+
+Here are the HTML tags I used in my website:
+1. <nav> - for the navigation menu at the top
+2. <section> - to divide content into different parts
+3. <div> - for grouping elements together
+4. <img> - for pictures and icons
+5. <form> - for the contact form
+6. <input> - for text boxes in the form
+7. <textarea> - for the message box
+8. <select> - for dropdown menus
+9. <button> - for clickable buttons
+10. <footer> - for the bottom part of pages
+11. <header> - for the top section
+12. <main> - for the main content area
+13. <article> - for project descriptions
+14. <aside> - for side information
+15. <ul> and <li> - for lists
+
+
++-------------------------------------+
+## CSS Properties I Used (5+ required)
++-------------------------------------+
+The CSS properties I used most:
+1. background-color - to change background colors
+2. font-family - to set different fonts
+3. margin - for spacing around elements
+4. padding - for spacing inside elements
+5. border-radius - to make rounded corners
+6. box-shadow - to add shadows and depth
+7. display: flex - for flexible layouts
+8. colo` - to change text colors
+
++----------+
+## My Pages
++----------+
+I created 4 HTML pages:
+- **index.html** - The main homepage with my intro
+- **about.html** - More details about my background and education
+- **projects.html** - Shows my work projects and achievements
+- **contact.html** - Has a contact form and my contact info
+
+You can navigate between all pages using the menu at the top.
+
++----------------------+
+## How I Used Bootstrap
++----------------------+
+I used Bootstrap to make my website look professional and work on phones. Some Bootstrap things I used:
+- The grid system (like `col-md-6`) to make columns
+- Navigation bar component that collapses on mobile
+- Card components to display my projects nicely
+- Button styles to make buttons look better
+- Form styling to make the contact form look clean
+
+I added Bootstrap by including the CDN links in the <head> section of my HTML files.
+
++---------------------+
+## JavaScript Features
++---------------------+
+I added JavaScript to make the contact form work better. When someone fills out the form, it:
+- Checks if the email looks correct (has @ and a dot)
+- Makes sure all required fields are filled
+- Shows an alert message when the form is submitted
+- Clears the form after submission
+
+I'm still learning JavaScript so I kept it simple, but it makes the site more interactive than just static HTML.
+
+## Responsive Design
+I tried to make sure the website works on both computers and phones.
+I used Bootstrap's responsive classes and also wrote some CSS media queries.
+The navigation menu turns into a hamburger menu on small screens, and the layout changes to stack vertically on mobile devices.
+
++----------------+
+## What I Learned
++----------------+
+This project taught me a lot about:
+- How HTML, CSS, and JavaScript work together
+- Using Bootstrap to make responsive websites
+- Form validation with JavaScript
+- CSS flexbox and grid layouts
+- Making websites accessible
+
++---------------------+
+## Files in My Project
++---------------------+
+- index.html - Homepage
+- about.html - About me page
+- projects.html - My projects
+- contact.html - Contact form
+- styles.css - My custom CSS
+- specification.txt - This file
+
+=====================
+## Challenges I Faced
+=====================
+The hardest part was getting the responsive design to work right.
+I had to learn about CSS media queries and Bootstrap's grid system.
+Also, making the JavaScript form validation work took some trial and error because I'm still new to JavaScript.
+
+Overall, I'm happy with how it turned out! It's my first real website and I learned a lot doing it.
+I'm actually thinking about making this my final project after I develop it more and add more features.
