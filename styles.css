@@ -584,3 +584,18 @@ html {
         padding: 2rem 0;
     }
 }
+
+
+.visitor-counter {
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 250px;
+            text-align: center;
+}
+
+.visitor-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 10px;
+}
