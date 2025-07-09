@@ -127,12 +127,22 @@
         <!-- Visitor Counter Card Section -->
         <section class="visitor-counter-section py-4">
             <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card text-center border-info shadow">
+                <div class="col-md-4 mb-3">
+                    <div class="card text-center border-info shadow h-100">
                         <div class="card-body">
                             <i class="bi bi-people-fill fs-1 text-info mb-2"></i>
                             <h5 class="card-title">Website Visitors</h5>
                             <p class="card-text fs-4" id="visitor-count">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card text-center border-success shadow h-100">
+                        <div class="card-body">
+                            <i class="bi bi-bar-chart-fill fs-1 text-success mb-2"></i>
+                            <h5 class="card-title">Visitors by Country</h5>
+                            <canvas id="countryBarChart" height="180"></canvas>
+                            <p class="card-text">Top 5 countries by visitor count</p>
                         </div>
                     </div>
                 </div>
@@ -184,9 +194,10 @@
     <!-- Bootstrap JavaScript - Required for interactive components like mobile menu -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Add this before </body> -->
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Simple localStorage-based visitor counter (per device)
+        // Visitor Counter (localStorage)
         let count = localStorage.getItem('visitorCount');
         if (!count) {
             count = 1;
@@ -197,6 +208,69 @@
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('visitor-count').textContent = count;
         });
+
+        // Country Bar Chart Logic
+        async function updateCountryChart() {
+            // Get country from IP
+            let country = localStorage.getItem('visitorCountry');
+            if (!country) {
+                try {
+                    const res = await fetch('https://ipapi.co/json/');
+                    const data = await res.json();
+                    country = data.country_name || "Unknown";
+                    localStorage.setItem('visitorCountry', country);
+                } catch {
+                    country = "Unknown";
+                }
+            }
+
+            // Update country counts in localStorage
+            let countryCounts = JSON.parse(localStorage.getItem('countryCounts') || '{}');
+            if (!countryCounts[country]) countryCounts[country] = 0;
+            countryCounts[country]++;
+            localStorage.setItem('countryCounts', JSON.stringify(countryCounts));
+
+            // Prepare data for chart
+            let entries = Object.entries(countryCounts);
+            entries.sort((a, b) => b[1] - a[1]);
+            let top5 = entries.slice(0, 5);
+            let othersCount = entries.slice(5).reduce((sum, e) => sum + e[1], 0);
+
+            let labels = top5.map(e => e[0]);
+            let data = top5.map(e => e[1]);
+            if (othersCount > 0) {
+                labels.push("Others");
+                data.push(othersCount);
+            }
+
+            // Draw chart
+            const ctx = document.getElementById('countryBarChart').getContext('2d');
+            if (window.countryChart) window.countryChart.destroy();
+            window.countryChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Visitors',
+                        data: data,
+                        backgroundColor: [
+                            '#0d6efd', '#198754', '#ffc107', '#dc3545', '#6f42c1', '#adb5bd'
+                        ]
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { beginAtZero: true, precision:0 }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCountryChart);
     </script>
 </body>
 </html>
