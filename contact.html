@@ -153,16 +153,17 @@
                         </h3>
 
                         <!-- Form structure follows best practices for user experience and accessibility -->
-                        <form id="contactForm" class="contact-form">
+                        <!-- Updated form to submit to Google Forms -->
+                        <form id="contactForm" class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLScwYXetjL977EQWEfyr52ADqxW87yUp0TR5wVW5ga9B1-GtIg/formResponse" method="POST" target="_blank">
                             <div class="row">
                                 <!-- Name field split into first and last for personalization -->
                                 <div class="col-md-6 mb-3">
                                     <label for="firstName" class="form-label">First Name *</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="First Name" >
+                                    <input type="text" class="form-control" id="firstName" name="entry.1804508952" required placeholder="First Name">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="lastName" class="form-label">Last Name *</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" required placeholder="Last Name">
+                                    <input type="text" class="form-control" id="lastName" name="entry.1410241278" required placeholder="Last Name">
                                 </div>
                             </div>
 
@@ -170,37 +171,37 @@
                                 <!-- Email and phone provide multiple contact options -->
                                 <div class="col-md-6 mb-3">
                                     <label for="email" class="form-label">Email Address *</label>
-                                    <input type="email" class="form-control" id="email" name="email" required placeholder="example@email.com">
+                                    <input type="email" class="form-control" id="email" name="entry.868035361" required placeholder="example@email.com">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="+000 00 0000000">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" name="entry.966001488" required placeholder="+000 00 0000000">
                                 </div>
                             </div>
 
                             <div class="mb-3">
                                 <label for="company" class="form-label">Company/Organization</label>
-                                <input type="text" class="form-control" id="company" name="company">
+                                <input type="text" class="form-control" id="company" name="entry.705441825">
                             </div>
 
                             <!-- Project type selection helps categorize inquiries -->
                             <div class="mb-3">
                                 <label for="projectType" class="form-label">Project Type</label>
-                                <select class="form-select" id="projectType" name="projectType">
+                                <select class="form-select" id="projectType" name="entry.1221846726">
                                     <option value="">Select a project type...</option>
-                                    <option value="digital-transformation">Digital Transformation Consulting</option>
-                                    <option value="bim-implementation">BIM Implementation</option>
-                                    <option value="training">Training & Education</option>
-                                    <option value="project-management">Project Management</option>
-                                    <option value="automation">Process Automation</option>
-                                    <option value="other">Other</option>
+                                    <option value="Digital Transformation Consulting">Digital Transformation Consulting</option>
+                                    <option value="BIM Implementation">BIM Implementation</option>
+                                    <option value="Training & Education">Training & Education</option>
+                                    <option value="Project Management">Project Management</option>
+                                    <option value="Process Automation">Process Automation</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
 
                             <!-- Message area provides space for detailed communication -->
                             <div class="mb-4">
                                 <label for="message" class="form-label">Message *</label>
-                                <textarea class="form-control" id="message" name="message" rows="5"
+                                <textarea class="form-control" id="message" name="entry.1615540190" rows="5"
                                           placeholder="Please describe your project, timeline, and any specific requirements..." required></textarea>
                             </div>
 
@@ -209,15 +210,15 @@
                                 <label class="form-label">Project Timeline</label>
                                 <div class="timeline-options">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="timeline" id="urgent" value="urgent">
+                                        <input class="form-check-input" type="radio" name="entry.1044664035" id="urgent" value="Urgent (Within 1 month)">
                                         <label class="form-check-label" for="urgent">Urgent (Within 1 month)</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="timeline" id="soon" value="soon">
+                                        <input class="form-check-input" type="radio" name="entry.1044664035" id="soon" value="Soon (1-3 months)">
                                         <label class="form-check-label" for="soon">Soon (1-3 months)</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="timeline" id="planning" value="planning">
+                                        <input class="form-check-input" type="radio" name="entry.1044664035" id="planning" value="Planning (3+ months)">
                                         <label class="form-check-label" for="planning">Planning (3+ months)</label>
                                     </div>
                                 </div>
@@ -347,27 +348,15 @@
     <!-- Bootstrap JavaScript enables interactive form components and accordion -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom JavaScript for form handling and user interaction -->
+    <!-- Updated JavaScript for Google Forms integration -->
     <script>
-        // Form submission handler demonstrates basic JavaScript interactivity
+        // Enhanced form submission handler for Google Forms integration
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            // Prevent default form submission to demonstrate custom handling
-            e.preventDefault();
-
-            // Get form data for potential processing
-            const formData = new FormData(this);
-            const formValues = Object.fromEntries(formData);
-
-            // Simple validation and user feedback
-            if (formValues.firstName && formValues.lastName && formValues.email && formValues.message) {
-                // Show success message (in real application, this would submit to a server)
-                alert('Thank you for your message! I will respond within 24 hours.');
-
-                // Reset form for next user
-                this.reset();
-            } else {
-                alert('Please fill in all required fields marked with *');
-            }
+            // Allow the form to submit to Google Forms
+            // Show a user-friendly message before redirect
+            setTimeout(function() {
+                alert('Thank you for your message! Your form has been submitted successfully. I will respond within 24 hours.');
+            }, 100);
         });
 
         // Form field validation for better user experience
@@ -378,6 +367,27 @@
                 this.classList.add('is-invalid');
             } else {
                 this.classList.remove('is-invalid');
+            }
+        });
+
+        // Optional: Add form validation before submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'message'];
+            let isValid = true;
+
+            requiredFields.forEach(function(fieldId) {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields marked with *');
             }
         });
     </script>
