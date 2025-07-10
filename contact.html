@@ -379,20 +379,20 @@
             submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Sending...';
             submitBtn.disabled = true;
 
-            // Prepare form data for Google Forms
+            // Prepare form data for Google Forms using the correct entry IDs
             const formData = new FormData();
-            formData.append('entry.1804508952', document.getElementById('firstName').value);
-            formData.append('entry.1410241278', document.getElementById('lastName').value);
-            formData.append('entry.868035361', document.getElementById('email').value);
-            formData.append('entry.966001488', document.getElementById('phone').value);
-            formData.append('entry.705441825', document.getElementById('company').value);
-            formData.append('entry.1221846726', document.getElementById('projectType').value);
-            formData.append('entry.1615540190', document.getElementById('message').value);
+            formData.append('entry.528188434', document.getElementById('firstName').value);  // First Name
+            formData.append('entry.173902224', document.getElementById('lastName').value);   // Last Name
+            formData.append('entry.37540013', document.getElementById('email').value);       // Email Address
+            formData.append('entry.17042272', document.getElementById('phone').value);       // Phone Number
+            formData.append('entry.1018773601', document.getElementById('company').value);   // Company/Organization
+            formData.append('entry.1288198909', document.getElementById('projectType').value); // Project Type
+            formData.append('entry.1539475853', document.getElementById('message').value);   // Message
             
             // Get selected timeline radio button
             const timeline = document.querySelector('input[name="timeline"]:checked');
             if (timeline) {
-                formData.append('entry.1044664035', timeline.value);
+                formData.append('entry.84081544', timeline.value);  // Project Timeline
             }
 
             // Submit to Google Forms using fetch
